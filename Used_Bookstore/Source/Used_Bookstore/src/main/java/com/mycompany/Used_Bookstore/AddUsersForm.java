@@ -135,6 +135,14 @@ public class AddUsersForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        private AdminForm parent;
+        
+        public AddUsersForm (AdminForm parent) {
+            this.parent = parent;
+            initComponents();
+        }
+    
+
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         // TODO add your handling code here:
         String username = txt_username.getText().trim();
@@ -148,12 +156,18 @@ public class AddUsersForm extends javax.swing.JFrame {
         }
         
         try (Connection conn = DatabaseConnection.getConnection()){
-            String SQLQuery = "INSERT INTO user (username, password, email, role) VALUES(?, ?, ?, ?)";
+            String SQLQuery = "INSERT INTO users (username, password, email, role) VALUES(?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(SQLQuery);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, email);
             ps.setString(4, role);
+            int row = ps.executeUpdate();
+            if (row != 0) {
+                JOptionPane.showMessageDialog(this, "Thêm dữ liệu thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                parent.loadUserData();
+                this.dispose();
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
             return;

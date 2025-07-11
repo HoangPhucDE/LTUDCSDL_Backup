@@ -50,16 +50,6 @@ public class AdminForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi khi tải dữ liệu: " + e.getMessage());
         }
     }
-    
-    public class AddUserForm extends javax.swing.JFrame {
-        private AdminForm parent;
-        
-        public AddUserForm(AdminForm parent) {
-            this.parent = parent;
-            initComponents();
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
