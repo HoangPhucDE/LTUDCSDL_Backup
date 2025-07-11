@@ -121,22 +121,22 @@ public class AdminForm extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(36, Short.MAX_VALUE))))
+                        .addComponent(lbl_welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(666, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
+                .addGap(63, 63, 63)
                 .addComponent(btn_add)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btn_edit)
                 .addGap(34, 34, 34)
                 .addComponent(btn_delete)
                 .addGap(28, 28, 28)
                 .addComponent(btn_cancel)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,15 +146,14 @@ public class AdminForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_delete)
-                        .addComponent(btn_edit)
-                        .addComponent(btn_cancel))
-                    .addComponent(btn_add))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_add)
+                    .addComponent(btn_delete)
+                    .addComponent(btn_edit)
+                    .addComponent(btn_cancel))
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -162,6 +161,24 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
+        int selectRow = tbl_users.getSelectedRow();
+        if (selectRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn user", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int user_id = (int) tbl_users.getValueAt(selectRow, 0);
+        String username =  (String) tbl_users.getValueAt(selectRow, 1);
+        String password =  (String) tbl_users.getValueAt(selectRow, 2);
+        String  role =  (String) tbl_users.getValueAt(selectRow, 3);
+        String status =  (String) tbl_users.getValueAt(selectRow, 4);
+        String email = (String) tbl_users.getValueAt(selectRow, 5);
+        
+        if (selectRow != -1) {
+            EditUserForm editUser = new EditUserForm();
+            editUser.setVisible(true);
+            
+            
+        }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed

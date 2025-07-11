@@ -162,11 +162,14 @@ public class AddUsersForm extends javax.swing.JFrame {
             ps.setString(2, password);
             ps.setString(3, email);
             ps.setString(4, role);
-            int row = ps.executeUpdate();
-            if (row != 0) {
+            int rows = ps.executeUpdate();
+            if (rows != 0) {
                 JOptionPane.showMessageDialog(this, "Thêm dữ liệu thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 parent.loadUserData();
                 this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm dữ liệu không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());

@@ -1,3 +1,4 @@
+com\mycompany\Used_Bookstore\EditUserForm.class
 com\mycompany\Used_Bookstore\LoginForm$4.class
 com\mycompany\Used_Bookstore\AdminForm$2.class
 com\mycompany\Used_Bookstore\DatabaseConnection.class
@@ -10,5 +11,6 @@ com\mycompany\Used_Bookstore\LoginForm$1.class
 com\mycompany\Used_Bookstore\AddUsersForm.class
 com\mycompany\Used_Bookstore\LoginForm$3.class
 com\mycompany\Used_Bookstore\AdminForm.class
+com\mycompany\Used_Bookstore\EditUserForm$1.class
 com\mycompany\Used_Bookstore\Session.class
 com\mycompany\Used_Bookstore\LoginForm$2.class
