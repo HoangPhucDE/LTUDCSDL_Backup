@@ -4,6 +4,10 @@
  */
 package com.mycompany.Used_Bookstore;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HI
@@ -80,6 +84,11 @@ public class EditUserForm extends javax.swing.JFrame {
 
         btn_update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
 
         btn_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_cancel.setText("Cancel");
@@ -159,6 +168,41 @@ public class EditUserForm extends javax.swing.JFrame {
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_passwordActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        // TODO add your handling code here:
+        String username = txt_username.getText();
+        String email= txt_email.getText();
+        String password =new String(txt_password.getPassword());
+        String role = cbb_role.getSelectedItem().toString();
+        String status = cbb_status.getSelectedItem().toString();
+        if (username.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "UPDATE users SET username = ?, email = ?, password = ?, role = ?, status = ? "
+                    + "WHERE user_ID = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setString(1, username);
+            ps.setString(2, email);
+            ps.setString(3, password);
+            ps.setString(4, role);
+            ps.setString(5, status);
+            ps.setInt(6, user_id);
+            int rows = ps.executeUpdate();
+            if (rows == 0) {
+                JOptionPane.showMessageDialog(this, "Cập nhật không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Cập nhật dữ liệu thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                parent.loadUserData();
+                dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
