@@ -71,6 +71,11 @@ public class AddUsersForm extends javax.swing.JFrame {
         });
 
         btn_close.setText("Close");
+        btn_close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_closeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,6 +181,15 @@ public class AddUsersForm extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
+        // TODO add your handling code here:
+        
+        int Chon = JOptionPane.showConfirmDialog(this,"Ban muon thoat ha", "thoat", JOptionPane.YES_NO_OPTION);
+        if (Chon == JOptionPane.YES_OPTION) {
+        dispose();
+        }
+    }//GEN-LAST:event_btn_closeActionPerformed
 
     /**
      * @param args the command line arguments

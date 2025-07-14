@@ -99,6 +99,11 @@ public class AdminForm extends javax.swing.JFrame {
         });
 
         btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
 
         btn_edit.setText("Edit");
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +113,11 @@ public class AdminForm extends javax.swing.JFrame {
         });
 
         btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,6 +192,41 @@ public class AdminForm extends javax.swing.JFrame {
         AddUsersForm addForm = new AddUsersForm();
         addForm.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        // TODO add your handling code here:
+        int selectRow = tbl_users.getSelectedRow();
+        if (selectRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn user", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int user_id = (int) tbl_users.getValueAt(selectRow, 0);
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa user " + user_id +" này không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        if (chon == JOptionPane.YES_OPTION) {
+            try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "DELETE FROM users WHERE user_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            int rows = ps.executeUpdate();
+            if (rows == 0) {
+                JOptionPane.showMessageDialog(this, "Xóa user không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Xóa user thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                loadUserData();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
+        }
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        // TODO add your handling code here:
+        int Chon = JOptionPane.showConfirmDialog(this,"Ban muon thoat ha", "thoat", JOptionPane.YES_NO_OPTION);
+        if (Chon == JOptionPane.YES_OPTION) {
+        dispose();
+        }
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
     /**
      * @param args the command line arguments
