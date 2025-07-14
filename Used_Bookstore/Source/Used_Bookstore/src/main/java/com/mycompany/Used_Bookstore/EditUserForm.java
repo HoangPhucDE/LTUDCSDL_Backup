@@ -10,13 +10,23 @@ package com.mycompany.Used_Bookstore;
  */
 public class EditUserForm extends javax.swing.JFrame {
     
+    private int user_id;
+    private AdminForm parent;
+     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditUserForm.class.getName());
 
     /**
      * Creates new form EditUserForm
      */
-    public EditUserForm() {
+    public EditUserForm(AdminForm parent, int user_id, String username, String password, String role, String status, String email) {
         initComponents();
+        this.parent = parent;
+        this.user_id = user_id;
+        txt_username.setText(username);
+        txt_password.setText(password);
+        txt_email.setText(email);
+        cbb_role.setSelectedItem(role);
+        cbb_status.setSelectedItem(status);
     }
 
     /**
@@ -172,7 +182,7 @@ public class EditUserForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new EditUserForm().setVisible(true));
+//        java.awt.EventQueue.invokeLater(() -> new EditUserForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

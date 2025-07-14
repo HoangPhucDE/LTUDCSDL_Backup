@@ -167,18 +167,14 @@ public class AdminForm extends javax.swing.JFrame {
             return;
         }
         int user_id = (int) tbl_users.getValueAt(selectRow, 0);
-        String username =  (String) tbl_users.getValueAt(selectRow, 1);
-        String password =  (String) tbl_users.getValueAt(selectRow, 2);
-        String  role =  (String) tbl_users.getValueAt(selectRow, 3);
-        String status =  (String) tbl_users.getValueAt(selectRow, 4);
-        String email = (String) tbl_users.getValueAt(selectRow, 5);
-        
-        if (selectRow != -1) {
-            EditUserForm editUser = new EditUserForm();
-            editUser.setVisible(true);
-            
-            
-        }
+        String username = (String) tbl_users.getValueAt(selectRow, 1);
+        String password = (String) tbl_users.getModel().getValueAt(selectRow, 6).toString();
+        String role = (String) tbl_users.getValueAt(selectRow, 3);
+        String status = (String) tbl_users.getValueAt(selectRow, 4);
+        String email = (String) tbl_users.getValueAt(selectRow, 2);
+
+        EditUserForm editUserForm = new EditUserForm(this, user_id, username, password, role, status, email);
+        editUserForm.setVisible(true);
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
