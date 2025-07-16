@@ -7,7 +7,6 @@ com\mycompany\Used_Bookstore\DatabaseConnection.class
 com\mycompany\Used_Bookstore\EditUserForm$3.class
 com\mycompany\Used_Bookstore\EmployeeForm.class
 com\mycompany\Used_Bookstore\AdminForm$1.class
-com\mycompany\Used_Bookstore\ManagerForm.class
 com\mycompany\Used_Bookstore\LoginForm.class
 com\mycompany\Used_Bookstore\AddUsersForm$1.class
 com\mycompany\Used_Bookstore\AdminForm$4.class
@@ -16,7 +15,6 @@ com\mycompany\Used_Bookstore\AddUsersForm.class
 com\mycompany\Used_Bookstore\LoginForm$3.class
 com\mycompany\Used_Bookstore\AdminForm.class
 com\mycompany\Used_Bookstore\EditUserForm$1.class
-com\mycompany\Used_Bookstore\Session.class
 com\mycompany\Used_Bookstore\AddUsersForm$2.class
 com\mycompany\Used_Bookstore\LoginForm$2.class
 com\mycompany\Used_Bookstore\AdminForm$3.class
