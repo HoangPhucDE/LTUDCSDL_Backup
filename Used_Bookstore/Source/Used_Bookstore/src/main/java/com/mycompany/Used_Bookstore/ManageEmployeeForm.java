@@ -183,8 +183,8 @@ public class ManageEmployeeForm extends javax.swing.JFrame {
         String status = (String) tbl_users.getValueAt(selectRow, 4);
         String email = (String) tbl_users.getValueAt(selectRow, 2);
 
-        EditUserForm editUserForm = new EditUserForm(this, user_id, username, password, role, status, email);
-        editUserForm.setVisible(true);
+        EditEmployeeFrom editEmployeeForm = new EditEmployeeFrom(this, user_id, username, password, role, status, email);
+        editEmployeeForm.setVisible(true);
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
