@@ -17,6 +17,7 @@ public class ManagerForm extends javax.swing.JFrame {
      */
     public ManagerForm() {
         initComponents();
+        
     }
 
     /**
@@ -28,29 +29,56 @@ public class ManagerForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbl_xinchao = new javax.swing.JLabel();
+        btn_employee = new javax.swing.JButton();
+        btn_products = new javax.swing.JButton();
+        btn_khac = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ManagerForm");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý");
+        lbl_xinchao.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbl_xinchao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_xinchao.setText("XIN CHAO");
+
+        btn_employee.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_employee.setText("Employee");
+
+        btn_products.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_products.setText("Products");
+
+        btn_khac.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_khac.setText("Khac");
+        btn_khac.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btn_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btn_products, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(btn_khac, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(83, 83, 83)
+                .addComponent(lbl_xinchao, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addComponent(lbl_xinchao, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_employee)
+                    .addComponent(btn_products)
+                    .addComponent(btn_khac))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,6 +110,9 @@ public class ManagerForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btn_employee;
+    private javax.swing.JButton btn_khac;
+    private javax.swing.JButton btn_products;
+    private javax.swing.JLabel lbl_xinchao;
     // End of variables declaration//GEN-END:variables
 }
