@@ -4,9 +4,11 @@
  */
 package com.mycompany.Used_Bookstore;
 
+import com.mycompany.Used_Bookstore.ManagerForm;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,10 +23,18 @@ public class ManageEmployeeForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-    public ManageEmployeeForm() {
+            private ManagerForm parent;
+    public ManageEmployeeForm(ManagerForm parent) {
         initComponents();
         lbl_welcome.setText("Welcome back " + Session.loginedInUsername);
         loadUserData();
+            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            this.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e){
+                    parent.setVisible(true);
+                } 
+            });
     }
     void loadUserData() {
         DefaultTableModel model = (DefaultTableModel) tbl_users.getModel();
@@ -189,7 +199,7 @@ public class ManageEmployeeForm extends javax.swing.JFrame {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-        AddEmployeeForm addEmployee = new AddEmployeeForm();
+        AddEmployeeForm addEmployee = new AddEmployeeForm(this);
         addEmployee.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_addActionPerformed
@@ -251,7 +261,12 @@ public class ManageEmployeeForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ManageEmployeeForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        new ManageEmployeeForm(null).setVisible(true);
+}
+    });
+//        java.awt.EventQueue.in
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

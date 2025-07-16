@@ -21,10 +21,6 @@ public class AddEmployeeForm extends javax.swing.JFrame {
     /**
      * Creates new form AddUsersForm
      */
-    public AddEmployeeForm() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,9 +125,9 @@ public class AddEmployeeForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        private AdminForm parent;
+        private ManageEmployeeForm parent;
         
-        public AddEmployeeForm (AdminForm parent) {
+        public AddEmployeeForm (ManageEmployeeForm parent) {
             this.parent = parent;
             initComponents();
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -156,11 +152,12 @@ public class AddEmployeeForm extends javax.swing.JFrame {
         }
         
         try (Connection conn = DatabaseConnection.getConnection()){
-            String SQLQuery = "INSERT INTO users (username, password, email) VALUES(?, ?, ?)";
+            String SQLQuery = "INSERT INTO users (username, password, email, role) VALUES(?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(SQLQuery);
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setString(3, email);
+            ps.setString(4, "Employee");
             int rows = ps.executeUpdate();
             if (rows != 0) {
                 JOptionPane.showMessageDialog(this, "Thêm dữ liệu thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -207,7 +204,7 @@ public class AddEmployeeForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AddEmployeeForm().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AddEmployeeForm(null).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

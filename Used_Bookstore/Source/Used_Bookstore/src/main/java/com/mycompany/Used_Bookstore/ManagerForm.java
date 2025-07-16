@@ -91,8 +91,9 @@ public class ManagerForm extends javax.swing.JFrame {
 
     private void btn_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_employeeActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new ManageEmployeeForm().setVisible(true);
+        ManageEmployeeForm managerEmplyeeForm = new ManageEmployeeForm(this);
+        managerEmplyeeForm.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_employeeActionPerformed
 
     /**
