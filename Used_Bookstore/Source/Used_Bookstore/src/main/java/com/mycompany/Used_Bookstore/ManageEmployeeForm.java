@@ -189,8 +189,8 @@ public class ManageEmployeeForm extends javax.swing.JFrame {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
-        ManageEmployeeForm addForm = new ManageEmployeeForm();
-        addForm.setVisible(true);
+        AddEmployeeForm addEmployee = new AddEmployeeForm();
+        addEmployee.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_addActionPerformed
 

@@ -50,7 +50,7 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_edituserform = new javax.swing.JLabel();
+        lbl_editEmplyee = new javax.swing.JLabel();
         lbl_username = new javax.swing.JLabel();
         lbl_password = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
@@ -66,9 +66,9 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbl_edituserform.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_edituserform.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_edituserform.setText("Edit User");
+        lbl_editEmplyee.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_editEmplyee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_editEmplyee.setText("Edit Employee");
 
         lbl_username.setText("Username");
 
@@ -109,7 +109,7 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl_edituserform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbl_editEmplyee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +142,7 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_edituserform, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_editEmplyee, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_username, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +242,7 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
     private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> cbb_role;
     private javax.swing.JComboBox<String> cbb_status;
-    private javax.swing.JLabel lbl_edituserform;
+    private javax.swing.JLabel lbl_editEmplyee;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_password;
     private javax.swing.JLabel lbl_role;
