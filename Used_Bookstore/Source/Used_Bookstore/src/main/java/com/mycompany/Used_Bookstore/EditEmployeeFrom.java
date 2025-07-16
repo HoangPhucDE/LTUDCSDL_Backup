@@ -14,23 +14,24 @@ import javax.swing.JOptionPane;
  * @author HI
  */
 public class EditEmployeeFrom extends javax.swing.JFrame {
-    
+        private ManageEmployeeForm parent;
     private int user_id;
-    private ManageEmployeeForm parent;
-     
+    private String username;
+    private String email;
+    private String password;
+    private String status;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditEmployeeFrom.class.getName());
 
     /**
      * Creates new form EditUserForm
      */
-    public EditEmployeeFrom(ManageEmployeeForm parent, int user_id, String username, String password, String role, String status, String email) {
+    public EditEmployeeFrom(ManageEmployeeForm parent, int user_id, String username, String password, String status, String email) {
         initComponents();
         this.parent = parent;
         this.user_id = user_id;
         txt_username.setText(username);
         txt_password.setText(password);
         txt_email.setText(email);
-        cbb_role.setSelectedItem(role);
         cbb_status.setSelectedItem(status);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -54,15 +55,13 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
         lbl_username = new javax.swing.JLabel();
         lbl_password = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
-        lbl_role = new javax.swing.JLabel();
         lbl_status = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
-        cbb_role = new javax.swing.JComboBox<>();
         cbb_status = new javax.swing.JComboBox<>();
         btn_update = new javax.swing.JButton();
-        btn_cancel = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +75,6 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
 
         lbl_email.setText("Email");
 
-        lbl_role.setText("Role");
-
         lbl_status.setText("Status");
 
         txt_password.addActionListener(new java.awt.event.ActionListener() {
@@ -85,8 +82,6 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
                 txt_passwordActionPerformed(evt);
             }
         });
-
-        cbb_role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Employee", "Manager", "Admin", " " }));
 
         cbb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive", " " }));
 
@@ -98,8 +93,13 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
             }
         });
 
-        btn_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel.setText("Cancel");
+        btn_reset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_reset.setText("Reset");
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +123,6 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
                                 .addComponent(txt_password))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_role)
                                     .addComponent(lbl_status)
                                     .addComponent(lbl_email))
                                 .addGap(48, 48, 48)
@@ -131,10 +130,9 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btn_update)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                        .addComponent(btn_cancel)
+                                        .addComponent(btn_reset)
                                         .addGap(54, 54, 54))
                                     .addComponent(txt_email)
-                                    .addComponent(cbb_role, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbb_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
@@ -156,17 +154,13 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
                     .addComponent(lbl_email)
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_role)
-                    .addComponent(cbb_role, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_status)
                     .addComponent(cbb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_update)
-                    .addComponent(btn_cancel))
+                    .addComponent(btn_reset))
                 .addGap(17, 17, 17))
         );
 
@@ -179,11 +173,10 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
-        String username = txt_username.getText();
-        String email= txt_email.getText();
-        String password =new String(txt_password.getPassword());
-        String role = cbb_role.getSelectedItem().toString();
-        String status = cbb_status.getSelectedItem().toString();
+        this.username = txt_username.getText();
+        this.email= txt_email.getText();
+        this.password =new String(txt_password.getPassword());
+        this.status = cbb_status.getSelectedItem().toString();
         if (username.isEmpty() || email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
@@ -196,7 +189,7 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
             ps.setString(1, username);
             ps.setString(2, email);
             ps.setString(3, password);
-            ps.setString(4, role);
+            ps.setString(4, "Employee");
             ps.setString(5, status);
             ps.setInt(6, user_id);
             int rows = ps.executeUpdate();
@@ -211,6 +204,14 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
         }
     }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        // TODO add your handling code here:
+        txt_username.setText(username);
+        txt_email.setText(email);
+        txt_password.setText(password);
+        cbb_status.setSelectedItem(status);
+    }//GEN-LAST:event_btn_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,14 +239,12 @@ public class EditEmployeeFrom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_update;
-    private javax.swing.JComboBox<String> cbb_role;
     private javax.swing.JComboBox<String> cbb_status;
     private javax.swing.JLabel lbl_editEmplyee;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_password;
-    private javax.swing.JLabel lbl_role;
     private javax.swing.JLabel lbl_status;
     private javax.swing.JLabel lbl_username;
     private javax.swing.JTextField txt_email;

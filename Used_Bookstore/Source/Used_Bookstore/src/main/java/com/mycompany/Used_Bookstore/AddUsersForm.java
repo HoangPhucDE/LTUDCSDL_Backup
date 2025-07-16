@@ -188,6 +188,7 @@ public class AddUsersForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
             return;
         }
+        parent.loadUserData();
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
