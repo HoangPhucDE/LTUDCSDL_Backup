@@ -6,6 +6,7 @@ package com.mycompany.Used_Bookstore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,13 @@ public class EditUserForm extends javax.swing.JFrame {
         txt_email.setText(email);
         cbb_role.setSelectedItem(role);
         cbb_status.setSelectedItem(status);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e){
+                    parent.setVisible(true);
+                } 
+            });
     }
 
     /**

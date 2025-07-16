@@ -7,6 +7,7 @@ package com.mycompany.Used_Bookstore;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -145,6 +146,13 @@ public class AddUsersForm extends javax.swing.JFrame {
         public AddUsersForm (AdminForm parent) {
             this.parent = parent;
             initComponents();
+            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            this.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e){
+                    parent.setVisible(true);
+                } 
+            });
         }
     
 

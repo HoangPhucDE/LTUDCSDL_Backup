@@ -44,6 +44,11 @@ public class ManagerForm extends javax.swing.JFrame {
 
         btn_employee.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_employee.setText("Employee");
+        btn_employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_employeeActionPerformed(evt);
+            }
+        });
 
         btn_products.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_products.setText("Products");
@@ -83,6 +88,12 @@ public class ManagerForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_employeeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new ManageEmployeeForm().setVisible(true);
+    }//GEN-LAST:event_btn_employeeActionPerformed
 
     /**
      * @param args the command line arguments

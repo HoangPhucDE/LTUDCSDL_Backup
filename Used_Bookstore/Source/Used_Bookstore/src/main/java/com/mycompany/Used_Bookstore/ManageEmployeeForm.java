@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HI
  */
-public class Manage_Emp_Form extends javax.swing.JFrame {
+public class ManageEmployeeForm extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Manage_Emp_Form.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ManageEmployeeForm.class.getName());
 
     /**
      * Creates new form AdminForm
      */
-    public Manage_Emp_Form() {
+    public ManageEmployeeForm() {
         initComponents();
         lbl_welcome.setText("Welcome back " + Session.loginedInUsername);
         loadUserData();
@@ -69,7 +69,7 @@ public class Manage_Emp_Form extends javax.swing.JFrame {
         btn_cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Admin Form");
+        setTitle("ManangeEmployeeForm");
 
         lbl_dashboard.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         lbl_dashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -113,6 +113,11 @@ public class Manage_Emp_Form extends javax.swing.JFrame {
         });
 
         btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,33 +195,38 @@ public class Manage_Emp_Form extends javax.swing.JFrame {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= tbl_users.getSelectedRow();
-        if(selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "vui long chon dong can xoa", "thong bao", JOptionPane.ERROR);
-        return;
-        }
-        int option = JOptionPane.showConfirmDialog(this, "Ban co chac muon xoa khong ", "thong bao", JOptionPane.YES_NO_OPTION);
-        if ( option !=JOptionPane.YES_OPTION)
+        int selectRow = tbl_users.getSelectedRow();
+        if (selectRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn user", "Thông báo", JOptionPane.WARNING_MESSAGE);
             return;
-        int userId=Integer.parseInt(tbl_users.getValueAt(selectedRow, 0).toString());
-        try (Connection conn = DatabaseConnection.getConnection()) { 
-            String sql= " Delete from users where user_id = ?";
-            PreparedStatement ps= conn.prepareStatement(sql);
-            ps.setInt(1, userId);
-             
-            int rows= ps.executeUpdate();
-            if ( rows >0) {
-            JOptionPane.showMessageDialog(this, " xoa thanh cong!");
-            loadUserData();
+        }
+        int user_id = (int) tbl_users.getValueAt(selectRow, 0);
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa user " + user_id +" này không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+        if (chon == JOptionPane.YES_OPTION) {
+            try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "DELETE FROM users WHERE user_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, user_id);
+            int rows = ps.executeUpdate();
+            if (rows == 0) {
+                JOptionPane.showMessageDialog(this, "Xóa user không thành công", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Xóa user thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                loadUserData();
             }
-            else
-                JOptionPane.showMessageDialog(this, "khong xoa duoc!");
-            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Loi SQL" +e.getMessage());           
+            JOptionPane.showMessageDialog(this, "Lỗi: " + e.getMessage());
+        }
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        // TODO add your handling code here:
+        int Chon = JOptionPane.showConfirmDialog(this,"Ban muon thoat ha", "thoat", JOptionPane.YES_NO_OPTION);
+        if (Chon == JOptionPane.YES_OPTION) {
+        dispose();
+        }
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,7 +250,7 @@ public class Manage_Emp_Form extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Manage_Emp_Form().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ManageEmployeeForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

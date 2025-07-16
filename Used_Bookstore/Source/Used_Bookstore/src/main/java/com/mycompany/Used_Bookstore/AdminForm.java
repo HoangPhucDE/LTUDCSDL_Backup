@@ -31,8 +31,7 @@ public class AdminForm extends javax.swing.JFrame {
         model.setColumnIdentifiers(new String[] {"user_id", "username", "password", "role", "employee_id", "email", "status", "created_at", "update_at"});
         model.setRowCount(0);
         try (Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM users Where role != ?");
-    
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM users");
                 ResultSet rs = ps.executeQuery()){
             while (rs.next()) {
                 Object[] row = {
